@@ -5,5 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor() {
+    console.log('Hola desde el servicio');
+  }
 }
