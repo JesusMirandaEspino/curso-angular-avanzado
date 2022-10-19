@@ -12,6 +12,7 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ProgressComponent } from './pages/progress/progress.component';
 import { Graph1Component } from './pages/graph1/graph1.component';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +25,12 @@ import { Graph1Component } from './pages/graph1/graph1.component';
     SideBarComponent,
     HeaderComponent,
     ProgressComponent,
-    Graph1Component
+    Graph1Component,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
