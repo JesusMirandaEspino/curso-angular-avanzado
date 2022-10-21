@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoPagesFoundComponent implements OnInit {
 
-  constructor() { }
+  currentYear = new Date().getFullYear();
+
+  constructor() {
+    // code
+  }
 
   ngOnInit(): void {
+    // code
   }
 
 }
