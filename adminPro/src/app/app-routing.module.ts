@@ -5,7 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { Graph1Component } from './pages/graph1/graph1.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProgressComponent } from './pages/progress/progress.component';
-import { NoPagesFoundComponent } from './pages/no-pages-found/no-pages-found.component';
+import { NoPagesFoundComponent } from './no-pages-found/no-pages-found.component';
 import { PagesComponent } from './pages/pages.component';
 
 
