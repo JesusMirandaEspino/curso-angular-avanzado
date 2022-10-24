@@ -5,7 +5,7 @@ import { Graph1Component } from './graph1/graph1.component';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,7 +19,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    AppRoutingModule
+    RouterModule
   ],
   exports:[
     ProgressComponent,
