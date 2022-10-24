@@ -20,13 +20,13 @@ import { PagesComponent } from './pages/pages.component';
     LoginComponent,
     RegisterComponent,
     NoPagesFoundComponent,
-    DashboardComponent,
     BreadCrumbsComponent,
     SideBarComponent,
     HeaderComponent,
     ProgressComponent,
     Graph1Component,
-    PagesComponent
+    PagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
