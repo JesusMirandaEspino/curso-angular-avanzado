@@ -6,7 +6,7 @@
                                     <div class="progress m-t-20">
                                       <div  class="progress-bar bg-info progress-bar-striped" aria-valuenow="85"
                                             aria-valuemin="0" aria-valuemax="100" style=" height:10px;"
-                                            [style.width]="progressBar" role="progressbar">
+                                            [style.width]="getprogressBar1" role="progressbar">
                                         <span class="sr-only">85% Complete (success)</span>
                                       </div>
                                     </div>
@@ -14,7 +14,7 @@
                                     <div class="progress m-t-20">
                                       <div  class="progress-bar bg-info progress-bar-striped" aria-valuenow="85"
                                             aria-valuemin="0" aria-valuemax="100" style=" height:10px;"
-                                            [style.width]="progressBar" role="progressbar">
+                                            [style.width]="getprogressBar2" role="progressbar">
                                         <span class="sr-only">85% Complete (success)</span>
                                       </div>
                                     </div>
@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-body">
 
-                              <app-increment></app-increment>
+                              <app-increment (valorSalida)=" progress1 =  $event" [valor]="progress1" ></app-increment>
 
                             </div>
                         </div>
@@ -43,6 +43,8 @@
                   <div class="col-6">
                         <div class="card">
                             <div class="card-body">
+
+                              <app-increment (valorSalida)=" progress2 =  $event" [valor]="progress2"></app-increment>
 
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-increment',
@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncrementComponent implements OnInit {
 
-  progress: number = 50;
 
-  get progressBar(){
-    return `${this.progress}%`
-  }
+
+  @Input('valor') progress: number = 50;
+
+  @Output() valorSalida: EventEmitter<number> = new EventEmitter();
+
 
   constructor() {
     // code
@@ -23,11 +24,17 @@ export class IncrementComponent implements OnInit {
 
   changeProgress(value: number) {
 
-    if( this.progress >= 100 && value  >= 0 ) return this.progress = 100;
+    if( this.progress >= 100 && value  >= 0 ){
+      this.valorSalida.emit(100);
+      return this.progress = 100;}
 
-    if( this.progress <= 0 && value  < 0 ) return this.progress = 0;
+    if( this.progress <= 0 && value  < 0 ) {
+      this.valorSalida.emit(0);
+      return this.progress = 0;}
 
     this.progress = this.progress + value;
+    this.valorSalida.emit(this.progress);
+    return
   }
 
 }
