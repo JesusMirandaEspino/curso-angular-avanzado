@@ -39,4 +39,19 @@ export class IncrementComponent implements OnInit {
     return
   }
 
+
+  onChanges(event: number){
+
+    if( event >= 100) {
+      this.progress = 100;
+    }else if( event <= 0 ){
+      this.progress = 0;
+    }else{
+      this.progress = event
+    }
+
+
+    this.valorSalida.emit(event);
+  }
+
 }
