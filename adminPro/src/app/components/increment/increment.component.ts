@@ -10,6 +10,7 @@ export class IncrementComponent implements OnInit {
 
 
   @Input('valor') progress: number = 50;
+  @Input() btnClass: string = 'btn-primary';
 
   @Output() valorSalida: EventEmitter<number> = new EventEmitter();
 
@@ -20,6 +21,7 @@ export class IncrementComponent implements OnInit {
 
   ngOnInit(): void {
     // code
+    this.btnClass = `btn ${this.btnClass}`
   }
 
   changeProgress(value: number) {
