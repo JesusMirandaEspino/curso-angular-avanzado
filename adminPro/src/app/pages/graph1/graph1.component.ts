@@ -10,7 +10,7 @@ import { ChartData } from 'chart.js';
 export class Graph1Component implements OnInit {
 
 // Doughnut
-  @Output() doughnutChartLabels1: string[] = [ 'Download Sales'];
+  @Output() doughnutChartLabels1: string[] = [ 'Sales', 'Sold', 'No sure'];
   @Output() doughnutChartData1: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels1,
     datasets: [
@@ -25,7 +25,7 @@ export class Graph1Component implements OnInit {
 
 
 // Doughnut
-  @Output() doughnutChartLabels2: string[] = [ 'Download Sales'];
+  @Output() doughnutChartLabels2: string[] = [ 'Download', 'Update', 'Fixed'];
   @Output() doughnutChartData2: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels1,
     datasets: [
@@ -40,7 +40,7 @@ export class Graph1Component implements OnInit {
 
 
 // Doughnut
-  @Output() doughnutChartLabels3: string[] = [ 'Download Sales'];
+  @Output() doughnutChartLabels3: string[] = [ 'A', 'B', 'C'];
   @Output() doughnutChartData3: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels1,
     datasets: [
