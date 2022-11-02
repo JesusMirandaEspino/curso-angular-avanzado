@@ -8,7 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
-import { NgChartsModule } from 'ng2-charts';
+
 
 
 @NgModule({
@@ -23,8 +23,7 @@ import { NgChartsModule } from 'ng2-charts';
     SharedModule,
     RouterModule,
     FormsModule,
-    ComponentsModule,
-    NgChartsModule
+    ComponentsModule
   ],
   exports:[
     ProgressComponent,

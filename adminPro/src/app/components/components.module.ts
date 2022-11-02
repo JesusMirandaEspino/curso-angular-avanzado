@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IncrementComponent } from './increment/increment.component';
 import { FormsModule } from '@angular/forms';
 import { DonaComponent } from './dona/dona.component';
-
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,9 @@ import { DonaComponent } from './dona/dona.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule,
+    DonaComponent
   ],
   exports: [
     IncrementComponent
