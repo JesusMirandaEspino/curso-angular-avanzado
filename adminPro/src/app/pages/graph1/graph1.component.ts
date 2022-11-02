@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { ChartData } from 'chart.js';
 
 
 @Component({
@@ -7,6 +8,67 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./graph1.component.scss']
 })
 export class Graph1Component implements OnInit {
+
+// Doughnut
+  @Output() doughnutChartLabels1: string[] = [ 'Download Sales'];
+  @Output() doughnutChartData1: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels1,
+    datasets: [
+      { data: [ 350, 450, 100 ],
+      backgroundColor: ['#00821C','#09DB36','#024D0F'],
+      hoverBackgroundColor: ['#00821C','#09DB36','#024D0F'],
+      hoverBorderColor:['#000000','#000000','#00000003']
+      },
+
+    ]
+  };
+
+
+// Doughnut
+  @Output() doughnutChartLabels2: string[] = [ 'Download Sales'];
+  @Output() doughnutChartData2: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels1,
+    datasets: [
+      { data: [ 450, 350, 100 ],
+      backgroundColor: ['#003482','#091edb','#02164d'],
+      hoverBackgroundColor: ['#003482','#091edb','#02164d'],
+      hoverBorderColor:['#000000','#000000','#00000003']
+      },
+
+    ]
+  };
+
+
+// Doughnut
+  @Output() doughnutChartLabels3: string[] = [ 'Download Sales'];
+  @Output() doughnutChartData3: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels1,
+    datasets: [
+      { data: [ 100, 450, 350],
+      backgroundColor: ['#00821C','#09DB36','#024D0F'],
+      hoverBackgroundColor: ['#00821C','#09DB36','#024D0F'],
+      hoverBorderColor:['#000000','#000000','#00000003']
+      },
+
+    ]
+  };
+
+
+  // Doughnut
+  @Output() doughnutChartLabels4: string[] = [ 'Download Sales'];
+  @Output() doughnutChartData4: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels1,
+    datasets: [
+      { data: [ 350, 100, 450 ],
+      backgroundColor: ['#003482','#091edb','#02164d'],
+      hoverBackgroundColor: ['#003482','#091edb','#02164d'],
+      hoverBorderColor:['#000000','#000000','#00000003']
+      },
+
+    ]
+  };
+
+
 
 
 

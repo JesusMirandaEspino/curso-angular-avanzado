@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartData, ChartEvent, ChartType, Color } from 'chart.js';
 @Component({
   selector: 'app-dona',
@@ -7,9 +7,11 @@ import { ChartData, ChartEvent, ChartType, Color } from 'chart.js';
 })
 export class DonaComponent implements OnInit {
 
+  @Input() title: string = 'Title'
+
 // Doughnut
-  public doughnutChartLabels: string[] = [ 'Download Sales'];
-  public doughnutChartData: ChartData<'doughnut'> = {
+  @Input() doughnutChartLabels: string[] = [ 'Download Sales'];
+  @Input() doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
     datasets: [
       { data: [ 350, 450, 100 ],
@@ -20,6 +22,7 @@ export class DonaComponent implements OnInit {
 
     ]
   };
+
   public doughnutChartType: ChartType = 'doughnut';
 
   constructor() {

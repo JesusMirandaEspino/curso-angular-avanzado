@@ -14,10 +14,10 @@ import { NgChartsModule } from 'ng2-charts';
     CommonModule,
     FormsModule,
     NgChartsModule,
-    DonaComponent
   ],
   exports: [
-    IncrementComponent
+    IncrementComponent,
+    DonaComponent
   ]
 })
 export class ComponentsModule { }
