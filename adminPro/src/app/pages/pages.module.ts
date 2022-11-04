@@ -32,7 +32,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     ProgressComponent,
     Graph1Component,
     PagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    AccountSettingsComponent
   ]
 })
 export class PagesModule { }
