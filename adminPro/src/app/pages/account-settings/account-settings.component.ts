@@ -7,21 +7,38 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AccountSettingsComponent implements OnInit {
 
+  linkTheme = document.querySelector('#theme');
+  linksThemes = document.querySelectorAll('.selector');
+
   constructor() {
     // code
   }
 
   ngOnInit(): void {
     // code
+    this.chekCurrentSeleted();
   }
 
 
   changeColorTheme(theme: string){
-    const linkTheme = document.querySelector('#theme');
     const url = `./assets/css/colors/${theme}.css`;
-    linkTheme?.setAttribute( 'href', url);
+    this.linkTheme?.setAttribute( 'href', url);
     localStorage.setItem('theme', url);
   }
 
+  chekCurrentSeleted(){
+
+
+    this.linksThemes.forEach(element => {
+      element.classList.remove('working');
+      const btnTheme = element.getAttribute('data-theme');
+      const btnThemeLink = `./assets/css/colors/${btnTheme}.css`;
+      const currentTheme = this.linkTheme?.getAttribute('href');
+
+      if(btnThemeLink == currentTheme) element.classList.add('working');
+
+    }
+      );
+  }
 
 }
