@@ -7,8 +7,8 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  linkTheme = document.querySelector('#theme');
-  linksThemes = document.querySelectorAll('.selector');
+  public linkTheme = document.querySelector('#theme');
+  public linksThemes: any;
 
   constructor() {
     // code
@@ -16,6 +16,7 @@ export class AccountSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     // code
+    this.linksThemes = document.querySelectorAll('.selector');
     this.chekCurrentSeleted();
   }
 
@@ -29,7 +30,7 @@ export class AccountSettingsComponent implements OnInit {
   chekCurrentSeleted(){
 
 
-    this.linksThemes.forEach(element => {
+    this.linksThemes.forEach((element:any) => {
       element.classList.remove('working');
       const btnTheme = element.getAttribute('data-theme');
       const btnThemeLink = `./assets/css/colors/${btnTheme}.css`;
