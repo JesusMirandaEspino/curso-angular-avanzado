@@ -13,10 +13,21 @@ export class PromesasComponent implements OnInit {
 
   ngOnInit(): void {
     // code
-    const promesa = new Promise( () => {
-      console.log('Hola mundo');
+    const promesa = new Promise( ( resolve, reject) => {
+
+        if(true){
+          resolve('Hola mundo');
+        }else{
+          reject('Hola')
+        }
+
     });
-    console.log('fin')
+
+    promesa.then(() => {
+      console.log('termine');
+    }).catch(err => console.log(err));
+
+    console.log('fin');
   }
 
 }
