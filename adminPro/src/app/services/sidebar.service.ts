@@ -21,6 +21,9 @@ export class SidebarService {
         },
         {
           titulo: 'Promesas', url: 'promesas'
+        },
+        {
+          titulo: 'Rxjs', url: 'rxjs'
         }
       ]
     }
