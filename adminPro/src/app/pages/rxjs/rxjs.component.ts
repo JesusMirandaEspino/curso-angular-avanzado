@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, interval } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, interval, Subscription } from 'rxjs';
 import {  filter, map, retry, take } from 'rxjs/operators';
 
 @Component({
@@ -7,7 +7,9 @@ import {  filter, map, retry, take } from 'rxjs/operators';
   templateUrl: './rxjs.component.html',
   styleUrls: ['./rxjs.component.scss']
 })
-export class RxjsComponent implements OnInit {
+export class RxjsComponent implements OnInit, OnDestroy {
+
+  public respInterval: Subscription;
 
   constructor() {
 
@@ -21,12 +23,17 @@ export class RxjsComponent implements OnInit {
       );
 
 
-    this.returnInterval().subscribe( resp => console.log(resp),)
+    this.respInterval =  this.returnInterval().subscribe( resp => console.log(resp),);
+
 
   }
 
   ngOnInit(): void {
     // code
+  }
+
+  ngOnDestroy(): void {
+    this.respInterval.unsubscribe();
   }
 
   returnInterval():Observable<number>{
