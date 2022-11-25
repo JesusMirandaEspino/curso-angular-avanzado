@@ -5,7 +5,7 @@ const app = express();
 
 // routes
 app.get( '/', (req, res) => {
-    res.json({
+    res.status(200).json({
         ok: true,
         msg: 'Hola mundo'
     });
