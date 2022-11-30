@@ -1,6 +1,8 @@
 const express = require('express');
+const { conectionDB } = require('./db/config');
 const app = express();
 
+conectionDB();
 
 // mean_user:uuw78DSfTMG4wErT
 // routes

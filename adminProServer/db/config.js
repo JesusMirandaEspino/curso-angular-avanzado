@@ -9,3 +9,7 @@ const conectionDB = async () => {
         throw new Error('Error a la hora de iniciar la base de datos');
     }
 }
+
+module.exports = {
+    conectionDB
+}
