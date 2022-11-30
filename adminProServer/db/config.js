@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config();
 const conectionDB = async () => {
     try{
-        await mongoose.connect('mongodb+srv://mean_user:uuw78DSfTMG4wErT@miclustercafe.ot4rh.mongodb.net/miBaseDatos');
+        await mongoose.connect(process.env.DBCNN);
         console.log('DB online');
     }catch(e){
         console.log(e);
