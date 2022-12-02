@@ -9,12 +9,13 @@ const app = express();
 // DB Conection
 conectionDB();
 
+// cors erros
+app.use(cors());
 
-app.use(cors())
-
+// lectura y escritura  del body
+app.use(express.json());
 
 // TODO routes
-
 app.use('api/users', require('./routes/users'));
 
 
