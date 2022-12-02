@@ -14,12 +14,9 @@ app.use(cors())
 
 
 // TODO routes
-app.get( '/', (req, res) => {
-    res.status(200).json({
-        ok: true,
-        msg: 'Hola mundo'
-    });
-});
+
+app.use('api/users', require('./routes/users'));
+
 
 // Server
 app.listen( process.env.PORT, () => {
