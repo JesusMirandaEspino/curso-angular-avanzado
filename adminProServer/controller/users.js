@@ -1,4 +1,5 @@
 const User = require('../models/users');
+const { response } = require('express');
 
 const getUsers = async (req, res) => {
 
@@ -11,19 +12,35 @@ const getUsers = async (req, res) => {
     });
 };
 
-const createUser = async (req, res) => {
+const createUser = async (req, res = response) => {
 
     const { name, email, password } = req.body;
-    const user = new User(name, email, password);
 
-    await user.save();
+    try{
+        const user = new User(name, email, password);
+        const existEmail = await User.findOne({email});
 
+        if( existEmail ){
+            res.status(400).json({
+                ok: false, 
+                message: 'Usuario registrado'
+            });
+        }
 
-    res.status(200).json({
-        ok: true,
-        msg: 'Hola mundo',
-        user
-    });
+        await user.save();
+        res.status(200).json({
+            ok: true,
+            msg: 'Hola mundo',
+            user
+        });
+
+    }catch(err){
+        console.log(err);
+        res.status(500).json({
+            ok: false,
+            msg: 'Error inesperado'
+        });
+    }
 };
 
 
