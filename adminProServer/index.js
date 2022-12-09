@@ -17,7 +17,7 @@ app.use(express.json());
 
 // TODO routes
 app.use('api/users', require('./routes/users'));
-
+app.use('api/login', require('./routes/auth'));
 
 // Server
 app.listen( process.env.PORT, () => {
