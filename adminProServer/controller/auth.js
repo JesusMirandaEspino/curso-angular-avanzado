@@ -1,20 +1,36 @@
 const User = require('../models/users');
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
-const User = require('../models/users');
 
-const login = () => {
+
+const login = async (req, res = response) => {
 
     const { email, password } = req.body;
 
     try{
 
-        const user = User.findOne({ email });
+        const userDB = await User.findOne({ email });
+
+        if( !userDB ){
+            res.status(404).json({
+                ok: false, 
+                message: 'email no registrado'
+            });
+        }
+
+        const userPass = bcrypt.compareSync( password, userDB.password );
+
+        if( !userPass ){
+            res.status(404).json({
+                ok: false, 
+                message: 'Password no valido'
+            });
+        }
 
         res.status(200).json({
             ok: true,
             msg: 'Hola mundo',
-            user
+
         });
     }catch(e){
         console.log(err);
