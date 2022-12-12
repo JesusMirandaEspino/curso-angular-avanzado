@@ -16,18 +16,14 @@ router.post( '/', validateJWT,  [
 ] ,createUser );
 
 
-router.get( '/:id', [
+router.put( '/:id', validateJWT, [
     check('name', 'El nombre es obligatorio').not().isEmpty(),
     check('email', 'El email es obligatorio').isEmail(),
     check('role', 'El role es obligatorio').not().isEmpty(),
     validarCampos
 ], updateUser );
 
-router.delete( '/:id', [
-    check('name', 'El nombre es obligatorio').not().isEmpty(),
-    check('email', 'El email es obligatorio').isEmail(),
-    check('role', 'El role es obligatorio').not().isEmpty(),
-    validarCampos
+router.delete( '/:id', validateJWT, [
 ], deleteUser );
 
 module.exports = router;
