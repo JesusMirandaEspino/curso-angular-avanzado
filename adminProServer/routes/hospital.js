@@ -2,22 +2,23 @@ const express = require('express');
 
 const router = express.Router();
 const { check } = require('express-validator');
+const { getHospitals, createHospital, updateHospital, deleteHospital } = require('../controller/hospital');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validateJWT } = require('../middlewares/validar-jwt');
 
 
-router.get( '/', getUsers );
+router.get( '/', getHospitals );
 
-router.post( '/', validateJWT,  [
+router.post( '/',  [
 
-] , );
+] , createHospital);
 
 
-router.put( '/:id', validateJWT, [
+router.put( '/:id', [
 
-],  );
+],  updateHospital);
 
-router.delete( '/:id', validateJWT, [
-],  );
+router.delete( '/:id', [
+],  deleteHospital);
 
 module.exports = router;
