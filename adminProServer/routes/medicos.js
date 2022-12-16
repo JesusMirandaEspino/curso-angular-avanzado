@@ -10,7 +10,9 @@ const { validateJWT } = require('../middlewares/validar-jwt');
 router.get( '/', getMedicos );
 
 router.post( '/',  [
-
+    validateJWT,
+    check('name', 'El nombre es obligatorio').not().isEmpty(),
+    validarCampos
 ] , createMedico);
 
 
