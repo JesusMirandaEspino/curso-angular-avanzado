@@ -19,15 +19,17 @@ const getHospitals = async (req, res) => {
 
 const createHospital = async (req, res = response) => {
 
-    const hospital = new Hospital(req.body);
+    const uid = req.uid;
+    const hospital = new Hospital({ user: uid, ...req.body});
 
     try{
 
-        await hospital.save();
+        const hospitalDB = await hospital.save();
 
         res.status(200).json({
             ok: true,
             msg: 'Hola mundo',
+            hospital: hospitalDB
 
         });
 
