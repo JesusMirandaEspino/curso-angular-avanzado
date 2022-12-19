@@ -3,7 +3,7 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const { generateJwt } = require('../helpers/jwt');
 
-const Hospital = require('../models/hospital')
+const Hospital = require('../models/hospital');
 
 
 const getHospitals = async (req, res) => {
