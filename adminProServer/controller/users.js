@@ -3,8 +3,12 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const { generateJwt } = require('../helpers/jwt');
 
+
+
+
+
 const getUsers = async (req, res) => {
-    
+
     const from = req.body.from
     const  [ users, total ] = await Promise.all([
                 User.find({}, 'name email role google')

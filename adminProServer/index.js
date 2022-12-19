@@ -19,6 +19,7 @@ app.use(express.json());
 app.use('api/users', require('./routes/users'));
 app.use('api/hospital', require('./routes/hospital'));
 app.use('api/medicos', require('./routes/medicos'));
+app.use('api/todo', require('./routes/search'));
 app.use('api/login', require('./routes/auth'));
 
 // Server
