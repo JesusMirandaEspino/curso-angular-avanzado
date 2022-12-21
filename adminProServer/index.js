@@ -21,6 +21,7 @@ app.use('api/hospital', require('./routes/hospital'));
 app.use('api/medicos', require('./routes/medicos'));
 app.use('api/todo', require('./routes/search'));
 app.use('api/login', require('./routes/auth'));
+app.use('api/upload', require('./routes/upload'));
 
 // Server
 app.listen( process.env.PORT, () => {

@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
-const { getTodo, getColection } = require('../controller/search');
+const { fileupload } = require('../controller/upload');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validateJWT } = require('../middlewares/validar-jwt');
 
-router.get( '/:search', validateJWT, getTodo );
 
-router.get( '/colection/:table/:search', validateJWT, getColection );
+router.put( '/:tipo/:id', validateJWT, fileupload );
 
 
 module.exports = router;
