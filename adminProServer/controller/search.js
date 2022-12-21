@@ -37,6 +37,40 @@ const getTodo = async (req, res = response) => {
 }
 
 
+
+
+const getColection = async (req, res = response) => {
+
+    const search = req.query.search;
+    const regex = new RegExp(search, 'i');
+
+    const [ user, medico, hospital ] = await Promise.all([ 
+            User.find({ name: regex }),
+            Medico.find({ name: regex }),
+            Hospital.find({ name: regex }), 
+    ])
+
+    try{
+
+        res.status(200).json({
+            ok: true,
+            msg: 'Hola mundo',
+            search,
+            user,
+            medico,
+            hospital
+        });
+
+    }catch(e){
+        console.log(err);
+        res.status(500).json({
+            ok: false,
+            msg: 'Error inesperado'
+        }); 
+    }
+}
+
 module.exports = {
-    getTodo
+    getTodo,
+    getColection
 }
