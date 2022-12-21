@@ -8,8 +8,22 @@ const Medico = require('../models/medico.js');
 
 const fileupload = async (req, res = response) => {
 
-    const search = req.params.search;
-    const regex = new RegExp(search, 'i');
+    const type = req.params.type;
+    const id = req.params.id;
+
+    const typesValidates = [ 'medicos', 'Hospitals', 'users' ];
+
+    if( !typesValidates.includes(type) ){
+        return res.status(400).json({
+            ok: false,
+            msg: 'Tipo no valido'
+        }); 
+    }
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+
 
     const [ user, medico, hospital ] = await Promise.all([ 
             User.find({ name: regex }),
