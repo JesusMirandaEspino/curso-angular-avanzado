@@ -11,10 +11,10 @@ const getUsers = async (req, res) => {
 
     const from = req.body.from
     const  [ users, total ] = await Promise.all([
-                User.find({}, 'name email role google')
+                User.find({}, 'name email role google img')
                             .skip(from)
                             .limit(5),
-                await User.count()
+                await User.countDocuments()
     ]);
 
     res.status(200).json({
