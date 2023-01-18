@@ -2,6 +2,13 @@ const User = require('../models/users');
 const Hospital = require('../models/hospital');
 const Medico = require('../models/medico.js');
 
+
+const deleteImg = (path) => {
+        if( fs.existsSync(path) ) {
+            fs.unlinkSync(path);
+        }
+}
+
 const updateImg = async (tipo, id, nombreArchivo) => {
     
     switch (tipo) {
@@ -12,18 +19,26 @@ const updateImg = async (tipo, id, nombreArchivo) => {
                     return false
                 }
 
-                const oldPath = `../uploads/medicos/${medico.img}`;
-                if( fs.existsSync(oldPath) ) {
-                    fs.unlinkSync(oldPath);
-                }
+                const oldPathMedico = `../uploads/medicos/${medico.img}`;
+                deleteImg(oldPathMedico)
 
                 medico.img = nombreArchivo;
                 await medico.save();
                 return true;
 
         case 'Hospitals':
-            
-            break;
+                const hospital = await Hospital.findById(id);
+                if(!hospital) {
+                    console.log( 'No es un Medico' );
+                    return false
+                }
+
+                const oldPathhospital = `../uploads/hospital/${hospital.img}`;
+                deleteImg(oldPathhospital)
+
+                hospital.img = nombreArchivo;
+                await hospital.save();
+                return true;
 
         case 'users':
             
