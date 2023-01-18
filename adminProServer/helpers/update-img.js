@@ -2,7 +2,7 @@ const User = require('../models/users');
 const Hospital = require('../models/hospital');
 const Medico = require('../models/medico.js');
 
-const updateImg = async (tipo, id, path, nombreArchivo) => {
+const updateImg = async (tipo, id, nombreArchivo) => {
     
     switch (tipo) {
         case 'medicos':
@@ -11,7 +11,15 @@ const updateImg = async (tipo, id, path, nombreArchivo) => {
                     console.log( 'No es un Medico' );
                     return false
                 }
-            break;
+
+                const oldPath = `../uploads/medicos/${medico.img}`;
+                if( fs.existsSync(oldPath) ) {
+                    fs.unlinkSync(oldPath);
+                }
+
+                medico.img = nombreArchivo;
+                await medico.save();
+                return true;
 
         case 'Hospitals':
             

@@ -55,7 +55,7 @@ const fileupload = async (req, res = response) => {
         });
     }
 
-    updateImg();
+    updateImg(type, id, nombreArchivo);
 
         res.status(200).json({
             ok: true,
