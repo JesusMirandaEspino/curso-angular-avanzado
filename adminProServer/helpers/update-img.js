@@ -33,16 +33,26 @@ const updateImg = async (tipo, id, nombreArchivo) => {
                     return false
                 }
 
-                const oldPathhospital = `../uploads/hospital/${hospital.img}`;
-                deleteImg(oldPathhospital)
+                const oldPathHospital = `../uploads/hospital/${hospital.img}`;
+                deleteImg(oldPathHospital)
 
                 hospital.img = nombreArchivo;
                 await hospital.save();
                 return true;
 
         case 'users':
-            
-            break;
+                const user = await User.findById(id);
+                if(!user) {
+                    console.log( 'No es un User' );
+                    return false
+                }
+
+                const oldPathUser = `../uploads/hospital/${user.img}`;
+                deleteImg(oldPathUser)
+
+                user.img = nombreArchivo;
+                await user.save();
+                return true;
 
         default:
             break;
