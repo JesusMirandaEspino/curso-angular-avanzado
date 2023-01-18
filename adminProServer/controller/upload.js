@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const { generateJwt } = require('../helpers/jwt');
 const Hospital = require('../models/hospital');
 const Medico = require('../models/medico.js');
+const { v4: uuidv4 } = require('uuid');
 
 
 const fileupload = async (req, res = response) => {
@@ -24,27 +25,43 @@ const fileupload = async (req, res = response) => {
         return res.status(400).send('No files were uploaded.');
     }
 
+    const img = req.files.img;
 
-    const [ user, medico, hospital ] = await Promise.all([ 
-            User.find({ name: regex }),
-            Medico.find({ name: regex }),
-            Hospital.find({ name: regex }), 
-    ])
+    const imgName = file.name.split('.');
 
-    try{
+    const extension = imgName[ imgName.length - 1];
+
+    const extensionsValidate = [ 'png', 'jpg', 'jpeg', 'gif' ];
+
+    if( !extensionsValidate.includes( extension ) ) {
+        return res.status(400).json({
+            ok: false,
+            msg: 'Tipo de extension no valido'
+        }); 
+    }
+
+    const nombreArchivo = `${uuidv4}.${extension}`;
+    const path = `./upload/${type}/${nombreArchivo}`
+
+
+    // Use the mv() method to place the file somewhere on your server
+    img.mv(path, (err) => {
+        if (err){
+        console.log(err);
+        return res.status(500).json({
+            ok: false,
+            msg: 'Error sl moverr la imagen'
+        });
+    }
+
 
         res.status(200).json({
             ok: true,
             msg: 'Hola mundo',
+            nombreArchivo
         });
+    });
 
-    }catch(e){
-        console.log(err);
-        res.status(500).json({
-            ok: false,
-            msg: 'Error inesperado'
-        }); 
-    }
 }
 
 module.exports = {
