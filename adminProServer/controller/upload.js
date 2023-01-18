@@ -5,6 +5,7 @@ const { generateJwt } = require('../helpers/jwt');
 const Hospital = require('../models/hospital');
 const Medico = require('../models/medico.js');
 const { v4: uuidv4 } = require('uuid');
+const { updateImg } = require('../helpers/update-img');
 
 
 const fileupload = async (req, res = response) => {
@@ -54,6 +55,7 @@ const fileupload = async (req, res = response) => {
         });
     }
 
+    updateImg();
 
         res.status(200).json({
             ok: true,
