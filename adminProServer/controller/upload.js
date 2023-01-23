@@ -6,6 +6,7 @@ const Hospital = require('../models/hospital');
 const Medico = require('../models/medico.js');
 const { v4: uuidv4 } = require('uuid');
 const { updateImg } = require('../helpers/update-img');
+const path_ = require('path')
 
 
 const fileupload = async (req, res = response) => {
@@ -66,6 +67,18 @@ const fileupload = async (req, res = response) => {
 
 }
 
+
+
+const returImg = async (req, res = response) => {
+    const type = req.params.type;
+    const photo = req.params.photo;
+    const pathImg = path_.join(__dirname, `../uploads/${type}/${photo}`);
+
+    res.sendFile( pathImg );
+
+}
+
 module.exports = {
-    fileupload
+    fileupload,
+    returImg
 }
